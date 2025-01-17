@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
+//Declarations.
 int get_user_decimal();
 
 void decimal_to_binary(int);
@@ -9,11 +11,30 @@ void decimal_to_hex(int);
 
 void reverse_array(char []);
 
+void binary_to_decimal(int);
+
+void decimal();
+
+void binary();
+
+void hexadecimal();
+
+
+//Initiations.
 int main(void) {
-    const int user_input = get_user_decimal();
-    decimal_to_binary(user_input);
-    decimal_to_hex(user_input);
-    return 0;
+    printf("What would you like to start with? \n\n 1. Decimal | 2. Binary | 3. Hexadecimal\n\n");
+    int user_input = 0;
+    scanf("%i", &user_input);
+
+    if (user_input == 1) {
+        decimal();
+    } else if (user_input == 2) {
+        binary();
+    } else if (user_input == 3) {
+        hexadecimal();
+    } else {
+        return 0;
+    }
 }
 
 int get_user_decimal() {
@@ -73,9 +94,6 @@ void decimal_to_hex(int decimal_number) {
     printf("\n");
 }
 
-void binary_to_decimal(int binary_number) {
-}
-
 void reverse_array(char arr[]) {
     int size = strlen(arr);
 
@@ -90,4 +108,19 @@ void reverse_array(char arr[]) {
         a++;
         b--;
     }
+}
+
+void binary_to_decimal(int binary_number) {
+}
+
+void decimal() {
+    const int user_input = get_user_decimal();
+    decimal_to_binary(user_input);
+    decimal_to_hex(user_input);
+}
+
+void binary() {
+}
+
+void hexadecimal() {
 }
