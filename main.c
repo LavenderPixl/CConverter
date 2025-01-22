@@ -1,6 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <tgmath.h>
+
 
 //Declarations.
 //Decimal
@@ -20,9 +21,11 @@ void binary_to_hexadecimal(char []);
 
 
 //Etc.
-void get_user_string();
+void get_user_string(char []);
 
 void reverse_array(char []);
+
+int power_of(int, int);
 
 void decimal();
 
@@ -60,22 +63,22 @@ int get_user_decimal() {
 
 void decimal_to_binary(int decimal_number) {
     int quotient;
-    int temp_array[40];
+    char temp_array[40];
     int i = 0;
-
 
     do {
         quotient = decimal_number / 2;
-        const int remainder = decimal_number % 2;
+        int remainder = decimal_number % 2;
         decimal_number = quotient;
-        temp_array[i] = remainder;
+        temp_array[i] = (remainder + '0');
         i++;
     } while (quotient != 0);
 
+
     printf("Binary: ");
-    for (int d = 0; d < i; d++) {
-        printf("%d", temp_array[d]);
-    }
+    reverse_array(temp_array);
+
+    printf("%s", temp_array);
     printf("\n");
 }
 
@@ -109,7 +112,18 @@ void decimal_to_hex(int decimal_number) {
 
 
 //Binary
-void binary_to_decimal(int binary_number) {
+void binary_to_decimal(char user_input[]) {
+    const unsigned long size = strlen(user_input);
+    unsigned long sum = 0;
+    unsigned long l = size - 1;
+
+    for (int i = 0; i < size; i++) {
+        if (user_input[l] == 0) {
+            continue;
+        }
+        sum = sum + (user_input[l] * power_of(2, i));
+    }
+    printf("%lu", sum);
 }
 
 void binary_to_hexadecimal(char user_input[]) {
@@ -118,10 +132,12 @@ void binary_to_hexadecimal(char user_input[]) {
 
 //Etc.
 void get_user_string(char user_input[]) {
+    printf("Enter your number: ");
+    scanf("%s", user_input);
 }
 
 void reverse_array(char arr[]) {
-    int size = strlen(arr);
+    long size = strlen(arr);
 
     int a = 0;
     int b = size - 1;
@@ -136,6 +152,16 @@ void reverse_array(char arr[]) {
     }
 }
 
+int power_of(int x, int n) {
+    int number = 1;
+
+    for (int i = 0; i < n; ++i)
+        number *= x;
+
+    return (number);
+}
+
+
 void decimal() {
     const int user_input = get_user_decimal();
     decimal_to_binary(user_input);
@@ -143,10 +169,11 @@ void decimal() {
 }
 
 void binary() {
-    const char user_input[40];
+    char user_input[40];
     get_user_string(user_input);
+    printf("%s", user_input);
     binary_to_decimal(user_input);
-    binary_to_hexadecimal(user_input);
+    // binary_to_hexadecimal(user_input);
 }
 
 void hexadecimal() {
