@@ -36,7 +36,7 @@ void hexadecimal();
 
 //Initiations.
 int main(void) {
-    printf("What would you like to start with? \n\n 1. Decimal | 2. Binary | 3. Hexadecimal\n\n");
+    printf("What would you like to start with? \n\n 1. Decimal | 2. Binary | 3. Hexadecimal\n\nChoice: ");
     int user_input = 0;
     scanf("%i", &user_input);
 
@@ -118,15 +118,20 @@ void binary_to_decimal(char user_input[]) {
     unsigned long l = size - 1;
 
     for (int i = 0; i < size; i++) {
-        if (user_input[l] == 0) {
+        if (user_input[i] == '0') {
+            l--;
             continue;
         }
-        sum = sum + (user_input[l] * power_of(2, i));
+        sum = sum + (power_of(2, l));
+        l--;
     }
-    printf("%lu", sum);
+    printf("Decimal: ");
+    printf("%lu\n", sum);
 }
 
 void binary_to_hexadecimal(char user_input[]) {
+    
+
 }
 
 
@@ -171,7 +176,6 @@ void decimal() {
 void binary() {
     char user_input[40];
     get_user_string(user_input);
-    printf("%s", user_input);
     binary_to_decimal(user_input);
     // binary_to_hexadecimal(user_input);
 }
