@@ -2,8 +2,8 @@
 #include <string.h>
 #include <tgmath.h>
 
+//pragma region Declarations.
 
-//Declarations.
 //Decimal
 int get_user_decimal();
 
@@ -33,6 +33,7 @@ void binary();
 
 void hexadecimal();
 
+//pragma endregion
 
 //Initiations.
 int main(void) {
@@ -130,7 +131,7 @@ void binary_to_decimal(char user_input[]) {
 }
 
 void binary_to_hexadecimal(char user_input[]) {
-    
+
 
 }
 
