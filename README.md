@@ -1,5 +1,5 @@
 > [!NOTE]
-> School project.
+> School project - H4
 
 ## A converter created in C. 
 
